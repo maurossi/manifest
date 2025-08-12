@@ -66,6 +66,7 @@
   <remove-project name="kernel/tests" />
   <remove-project name="kernel/prebuilts/4.19/arm64" />
   <remove-project name="platform/bionic" />
+  <remove-project name="platform/build/soong" />
   <remove-project name="platform/compatibility/cdd" />
   <remove-project name="platform/developers/build" />
   <remove-project name="platform/developers/demos" />
@@ -192,12 +193,17 @@
   <!-- From Android-x86 repositories -->
   <remote  name="x86" fetch="https://github.com/android-x86-mirror/" />
   <remote  name="sf" fetch="https://git.code.sf.net/p/android-x86/" />
+  <remote  name="maurossi" fetch="https://github.com/maurossi/" />
 
-  <project path="kernel" name="kernel" remote="sf" revision="kernel-5.4" clone-depth="1" />
+  <project path="kernel" name="linux" remote="maurossi" revision="kernel-6.14" clone-depth="1" />
   <project path="bionic" name="bionic" remote="x86" revision="r-x86" />
   <project path="bootable/newinstaller" name="bootable-newinstaller" remote="x86" revision="r-x86" />
-  <project path="device/generic/common" name="device-generic-common" remote="x86" revision="r-x86" />
-  <project path="device/generic/firmware" name="device-generic-firmware" remote="x86" revision="r-x86" />
+  <project path="build/soong" name="build_soong" remote="maurossi" revision="r-x86_mesa_25.2.0" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="device/generic/common" name="device_generic_common" remote="maurossi" revision="r-x86_mesa_25.2.0" />
+  <project path="device/generic/firmware" name="device_generic_firmware" remote="maurossi" revision="nvidia_2024-07-12" />
   <project path="device/generic/x86_64" name="device-generic-x86_64" remote="x86" revision="r-x86" />
   <project path="device/generic/x86" name="device-generic-x86" remote="x86" revision="r-x86" />
   <project path="external/alsa-lib" name="external-alsa-lib" remote="x86" revision="r-x86" />
@@ -206,21 +212,22 @@
   <project path="external/bluetooth/bluez" name="external-bluetooth-bluez" remote="x86" revision="r-x86" />
   <project path="external/busybox" name="external-busybox" remote="x86" revision="r-x86" />
   <project path="external/drm_framebuffer" name="external-drm_framebuffer" remote="x86" revision="r-x86" />
-  <project path="external/drm_hwcomposer" name="external-drm_hwcomposer" remote="x86" revision="r-x86" />
+  <project path="external/drm_hwcomposer" name="drm_hwcomposer" remote="maurossi" revision="r-x86_2023-02-01" />
   <project path="external/drmfb-composer" name="external-drmfb-composer" remote="x86" revision="r-x86" />
   <project path="external/efibootmgr" name="external-efibootmgr" remote="x86" revision="r-x86" />
   <project path="external/efivar" name="external-efivar" remote="x86" revision="r-x86" />
   <project path="external/exfat" name="external-exfat" remote="x86" revision="r-x86" />
   <project path="external/ffmpeg" name="external-ffmpeg" remote="x86" revision="r-x86" />
-  <project path="external/gbm_gralloc" name="external-gbm_gralloc" remote="x86" revision="r-x86" />
-  <project path="external/kernel-drivers" name="external-kernel-drivers" remote="x86" revision="r-x86" />
+  <project path="external/gbm_gralloc" name="gbm_gralloc" remote="maurossi" revision="pixel_formats" />
+  <project path="external/gbm_gralloc_stride" name="gbm_gralloc" remote="maurossi" revision="pixel_formats_stride" />
+  <project path="external/kernel-drivers" name="kernel-drivers" remote="maurossi" revision="kernel-6.14" />
   <project path="external/koush/Superuser" name="external-koush-Superuser" remote="x86" revision="r-x86" />
   <project path="external/koush/Widgets" name="external-koush-Widgets" remote="x86" revision="r-x86" />
-  <project path="external/libdrm" name="external-libdrm" remote="x86" revision="r-x86" />
+  <project path="external/libdrm" name="drm" remote="maurossi" revision="2.4.125_android-x86" />
   <project path="external/libncurses" name="external-libncurses" remote="x86" revision="q-x86" />
   <project path="external/llvm-project" name="external-llvm-project" remote="x86" revision="r-x86" />
-  <project path="external/mesa" name="external-mesa" remote="x86" revision="r-x86" />
-  <project path="external/minigbm" name="external-minigbm" remote="x86" revision="r-x86" />
+  <project path="external/mesa" name="mesa" remote="maurossi" revision="25.3.0_branch_w32" />
+  <project path="external/minigbm" name="minigbm" remote="maurossi" revision="s-x86" />
   <project path="external/mksh" name="external-mksh" remote="x86" revision="r-x86" />
   <project path="external/ntfs-3g" name="external-ntfs-3g" remote="x86" revision="r-x86" />
   <project path="external/s2tc" name="external-s2tc" remote="x86" revision="r-x86" />
@@ -228,7 +235,7 @@
   <project path="external/v86d" name="external-v86d" remote="x86" revision="r-x86" />
   <project path="frameworks/av" name="frameworks-av" remote="x86" revision="r-x86" />
   <project path="frameworks/base" name="frameworks-base" remote="x86" revision="r-x86" />
-  <project path="frameworks/native" name="frameworks-native" remote="x86" revision="r-x86" />
+  <project path="frameworks/native" name="frameworks_native" remote="maurossi" revision="r-x86_nouveau_nvk" />
   <project path="hardware/gps" name="hardware-gps" remote="x86" revision="r-x86" />
   <project path="hardware/intel/audio_media" name="hardware-intel-audio_media" remote="x86" revision="r-x86" />
   <project path="hardware/intel/common/libva" name="hardware-intel-common-libva" remote="x86" revision="r-x86" />
